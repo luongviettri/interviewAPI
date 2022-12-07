@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Learning node, express and mongoDB",
   "main": "app.js",
-  "type": "module",
   "engines": {
     "node":"14.x"
   },
