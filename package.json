@@ -2,8 +2,8 @@
   "name": "natours",
   "version": "1.0.0",
   "description": "Learning node, express and mongoDB",
-  "main": "app.js",
-  "engines": {
+  "main":"server.js",
+  "engines":{
     "node":"14.x"
   },
   "scripts": {
