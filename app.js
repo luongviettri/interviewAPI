@@ -6,6 +6,7 @@ const helmet = require('helmet');
 const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const hpp = require('hpp');
+const cors = require('cors');
 
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
@@ -23,11 +24,13 @@ const userRouter = require('./routes/interviewRouter/userRouter');
 const commentRouter = require('./routes/interviewRouter/commentRouter');
 //?-----------------------bai lam------------------------------------------
 const app = express();
+
 // const corsOptions = {
 //   origin: 'http://localhost:4000',
 //   credentials: true, //access-control-allow-credentials:true
 //   optionSuccessStatus: 200,
 // };
+app.use(cors()); // Use this after the variable declaration
 
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
