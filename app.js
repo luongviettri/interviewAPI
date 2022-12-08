@@ -24,7 +24,12 @@ const userRouter = require('./routes/interviewRouter/userRouter');
 const commentRouter = require('./routes/interviewRouter/commentRouter');
 //?-----------------------bai lam------------------------------------------
 const app = express();
-
+const corsOptions = {
+  origin: 'http://localhost:4000',
+  credentials: true, //access-control-allow-credentials:true
+  optionSuccessStatus: 200,
+};
+app.use(cors(corsOptions));
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
 
@@ -104,11 +109,6 @@ app.all('*', (req, res, next) => {
 });
 //! express mặc định rằng middleware nào có 4 params thì là middle xử lý lỗi
 app.use(globalErrorHandler);
-const corsOptions = {
-  origin: 'http://localhost:4000',
-  credentials: true, //access-control-allow-credentials:true
-  optionSuccessStatus: 200,
-};
-app.use(cors(corsOptions));
+
 // START SERVER
 module.exports = app;
