@@ -63,19 +63,24 @@ exports.getOne = (Model, popOptions) =>
     });
   });
 
-exports.getAll = (Model) =>
+exports.getAll = (Model, popOptions) =>
   catchAsync(async (req, res, next) => {
-    console.log('req: ', req.params);
     //! to allow for nested GET reviews on tour (hack)
     let filter = {};
 
     if (req.params.postId) filter = { post: req.params.postId };
     //! EXECUTE QUERY
-    const features = new APIFeatures(Model.find(filter), req.query)
+    const features = new APIFeatures(
+      Model.find(filter).populate(popOptions),
+      req.query
+    )
       .filter()
       .sort()
       .limitFields()
       .paginate();
+
+    // if (popOptions) features = features.populate(popOptions);
+
     const doc = await features.query;
     //! SEND RESPONSE
     res.status(200).json({

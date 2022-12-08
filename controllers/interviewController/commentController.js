@@ -7,7 +7,7 @@ exports.setCommentOnPost = (req, res, next) => {
   next();
 };
 
-exports.getAllComment = factory.getAll(Comment);
+exports.getAllComment = factory.getAll(Comment, { path: 'owner' });
 exports.getComment = factory.getOne(Comment, { path: 'owner' });
 exports.createComment = factory.createOne(Comment);
 exports.deleteComment = factory.deleteOne(Comment);
