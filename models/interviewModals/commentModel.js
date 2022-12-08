@@ -23,6 +23,6 @@ const commentSchema = new mongoose.Schema(
 );
 
 //todo Create model
-const Comment = mongoose.model('Review', commentSchema);
+const Comment = mongoose.model('Comment', commentSchema);
 //todo export
 module.exports = Comment;
