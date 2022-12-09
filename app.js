@@ -51,7 +51,7 @@ if (process.env.NODE_ENV === 'development') {
 
 //todo: tạo và sử dụng middleware này để limit 100 request/ 1 giờ từ client
 const limiter = rateLimit({
-  max: 100,
+  max: 1000,
   windowMs: 60 * 60 * 1000,
   message: 'Too many requests from this IP, please try again in an hour',
 });
